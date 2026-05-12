@@ -1,106 +1,99 @@
-{\rtf1\ansi\ansicpg1252\cocoartf2822
-\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
-{\colortbl;\red255\green255\blue255;}
-{\*\expandedcolortbl;;}
-\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
-\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+PROCEDURE
 
-\f0\fs24 \cf0 PROCEDURE\
-\
-Step 1: Check Existing Swap\
-\
-swapon --show\
-\
-or\
-\
-free -h\
-\
-\
-Step 2: List Available Disks\
-\
-sudo fdisk -l\
-\
-\
-Step 3: Create a New Partition\
-\
-sudo fdisk /dev/sda\
-\
-\
-Inside fdisk:\
-\
-n  \uc0\u8594  Create new partition\
-p  \uc0\u8594  Primary partition\
-3  \uc0\u8594  Partition number\
-\
-Press Enter for First sector\
-\
-+2G \uc0\u8594  Last sector size\
-\
-\
-Step 4: Change Partition Type to Swap\
-\
-Inside fdisk:\
-\
-t\
-82\
-\
-Type 82 represents Linux swap.\
-\
-Save changes:\
-\
-w\
-\
-\
-Step 5: Format Partition as Swap\
-\
-sudo mkswap /dev/sda3\
-\
-\
-Step 6: Activate Swap Partition\
-\
-sudo swapon /dev/sda3\
-\
-\
-Step 7: Verify Swap\
-\
-swapon --show\
-\
-or\
-\
-free -h\
-\
-\
-\
-Implementation Code\
-\
-sudo fdisk /dev/sda\
-\
-sudo mkswap /dev/sda3\
-\
-sudo swapon /dev/sda3\
-\
-swapon --show\
-\
-free -h\
-\
-\
-\
-Sample Input\
-\
-Partition size : +2G\
-\
-Partition type : 82\
-\
-Device name : /dev/sda3\
-\
-\
-\
-Sample Output\
-\
-NAME        TYPE       SIZE USED PRIO\
-/dev/sda3   partition   2G   0B   -2\
-\
-\
-Output of free -h:\
-\
-Swap: 2.0G 0B 2.0G}
+Step 1: Check Existing Swap
+
+swapon --show
+
+or
+
+free -h
+
+
+Step 2: List Available Disks
+
+sudo fdisk -l
+
+
+Step 3: Create a New Partition
+
+sudo fdisk /dev/sda
+
+
+Inside fdisk:
+
+n  → Create new partition
+p  → Primary partition
+3  → Partition number
+
+Press Enter for First sector
+
++2G → Last sector size
+
+
+Step 4: Change Partition Type to Swap
+
+Inside fdisk:
+
+t
+82
+
+Type 82 represents Linux swap.
+
+Save changes:
+
+w
+
+
+Step 5: Format Partition as Swap
+
+sudo mkswap /dev/sda3
+
+
+Step 6: Activate Swap Partition
+
+sudo swapon /dev/sda3
+
+
+Step 7: Verify Swap
+
+swapon --show
+
+or
+
+free -h
+
+
+
+Implementation Code
+
+sudo fdisk /dev/sda
+
+sudo mkswap /dev/sda3
+
+sudo swapon /dev/sda3
+
+swapon --show
+
+free -h
+
+
+
+Sample Input
+
+Partition size : +2G
+
+Partition type : 82
+
+Device name : /dev/sda3
+
+
+
+Sample Output
+
+NAME        TYPE       SIZE USED PRIO
+/dev/sda3   partition   2G   0B   -2
+
+
+Output of free -h:
+
+Swap: 2.0G 0B 2.0G
