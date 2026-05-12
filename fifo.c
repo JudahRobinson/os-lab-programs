@@ -1,56 +1,62 @@
 #include <stdio.h>
+#include <stdlib.h>
 
-int main()
-{
-    int pages[50], frame[10];
-    int n, f, i, j, k = 0, fault = 0;
+int pagefault(int a[], int frame[], int n, int no) {
 
-    printf("Enter number of pages: ");
-    scanf("%d", &n);
+    int i, j = 0, count = 0, k;
 
-    printf("Enter page reference string:\n");
-    for(i = 0; i < n; i++)
-        scanf("%d", &pages[i]);
-
-    printf("Enter number of frames: ");
-    scanf("%d", &f);
-
-    for(i = 0; i < f; i++)
+    for(i = 0; i < no; i++)
         frame[i] = -1;
 
-    for(i = 0; i < n; i++)
-    {
-        int found = 0;
+    for(i = 0; i < n; i++) {
 
-        for(j = 0; j < f; j++)
-        {
-            if(frame[j] == pages[i])
-            {
-                found = 1;
-                break;
-            }
+        int avail = 0;
+
+        for(k = 0; k < no; k++) {
+
+            if(frame[k] == a[i])
+                avail = 1;
         }
 
-        if(found == 0)
-        {
-            frame[k] = pages[i];
-            k = (k + 1) % f;
-            fault++;
-        }
+        if(avail == 0) {
 
-        printf("Frame: ");
-        for(j = 0; j < f; j++)
-        {
-            if(frame[j] != -1)
-                printf("%d ", frame[j]);
-            else
-                printf("- ");
-        }
+            frame[j] = a[i];
 
-        printf("\n");
+            j = (j + 1) % no;
+
+            count++;
+        }
     }
 
-    printf("Total Page Faults = %d\n", fault);
+    return count;
+}
+
+int main() {
+
+    int n, no, fault, i;
+    int *a, *frame;
+
+    printf("ENTER THE NUMBER OF PAGES: ");
+    scanf("%d", &n);
+
+    a = (int *)malloc(n * sizeof(int));
+
+    printf("ENTER THE PAGE NUMBER: ");
+
+    for(i = 0; i < n; i++)
+        scanf("%d", &a[i]);
+
+    printf("ENTER THE NUMBER OF FRAMES: ");
+    scanf("%d", &no);
+
+    frame = (int *)malloc(no * sizeof(int));
+
+    fault = pagefault(a, frame, n, no);
+
+    printf("Page Faults: %d\n", fault);
+
+    free(a);
+    free(frame);
 
     return 0;
 }
