@@ -1,0 +1,53 @@
+{\rtf1\ansi\ansicpg1252\cocoartf2822
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx720\tx1440\tx2160\tx2880\tx3600\tx4320\tx5040\tx5760\tx6480\tx7200\tx7920\tx8640\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 Implementation Code (Linux Commands)\
+\
+# Schedule a one-time job using at\
+at 16:30\
+\
+echo "Hello Linux Scheduling" > test.txt\
+\
+Ctrl + D\
+\
+# View scheduled at jobs\
+atq\
+\
+# Remove a scheduled job\
+atrm 1\
+\
+# Schedule recurring job using cron\
+crontab -e\
+\
+# Cron entry example (runs every minute)\
+* * * * * echo "Cron Job Running" >> cron_output.txt\
+\
+# View cron jobs\
+crontab -l\
+\
+\
+Sample Input\
+\
+at 16:30\
+echo "Job executed using at command" > job.txt\
+\
+Cron job entry:\
+* * * * * echo "Cron job executed" >> cron.txt\
+\
+\
+Sample Output\
+\
+$ atq\
+1 Tue Mar 10 16:30:00 2026 a user\
+\
+$ cat job.txt\
+Job executed using at command\
+\
+$ cat cron.txt\
+Cron job executed\
+Cron job executed\
+Cron job executed}

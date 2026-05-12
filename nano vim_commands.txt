@@ -1,0 +1,7 @@
+vim sample.txt
+i
+This is a sample file created using VIM editor.
+Esc
+:w
+:wq
+cat sample.txt
